@@ -22,8 +22,8 @@
 </servlet-mapping>
 
 <servlet>
-	<servlet-name>basicServlet</servlet-name>
-	<servlet-class>kr.or.ddit.basic.BasicServlet</servlet-class>
+	<servlet-name>TimesTablesServlet</servlet-name>
+	<servlet-class>kr.or.ddit.basic.TimesTablesServlet</servlet-class>
 </servlet>
 
 <servlet-mapping>
