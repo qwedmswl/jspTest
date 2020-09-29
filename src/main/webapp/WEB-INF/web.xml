@@ -16,6 +16,7 @@
 	<servlet-class>kr.or.ddit.basic.BasicServlet</servlet-class>
 </servlet>
 
+<!-- /basicServlet으로 요청이 올 경우 basicServlet이라는 이름의 서블릿을 실행 -->
 <servlet-mapping>
 	<servlet-name>basicServlet</servlet-name>
 	<url-pattern>/basicServlet</url-pattern>
