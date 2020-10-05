@@ -10,6 +10,11 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
+	<context-param>
+		<param-name>dbUserId</param-name>
+		<param-value>DY</param-value>
+	</context-param>
+
 <servlet>
 
 	<servlet-name>basicServlet</servlet-name>
