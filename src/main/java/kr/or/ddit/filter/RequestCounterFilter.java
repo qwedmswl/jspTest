@@ -19,16 +19,16 @@ import org.slf4j.LoggerFactory;
 public class RequestCounterFilter implements Filter{
 	private static final Logger logger = LoggerFactory.getLogger(RequestCounterFilter.class);
 	
-	Map<String, Integer> reqeustCounterMap;
+	Map<String, Integer> requestCounterMap;
 	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
 		logger.debug("RequestCounterFilter.init()");
-		reqeustCounterMap = new HashMap<String, Integer>();
+		requestCounterMap = new HashMap<String, Integer>();
 		
 		//  request, session, application
 		ServletContext sc = filterConfig.getServletContext();
-		sc.setAttribute("requestCounterMap", reqeustCounterMap);
+		sc.setAttribute("requestCounterMap", requestCounterMap);
 	}
 
 	@Override
@@ -51,15 +51,15 @@ public class RequestCounterFilter implements Filter{
 		있으면
 			기존 값에서 1을 더해 값을 수정*/
 		
-		Integer value = reqeustCounterMap.get(req.getRequestURI());
+		Integer value = requestCounterMap.get(req.getRequestURI());
 		
 		//해당 uri로 최초요청
 		if(value == null) {
-			reqeustCounterMap.put(req.getRequestURI(), 1);
+			requestCounterMap.put(req.getRequestURI(), 1);
 		}
 		//해당 uri로 최소 한번이상 요청이 존재 했던 경우
 		else {
-			reqeustCounterMap.put(req.getRequestURI(), value + 1);
+			requestCounterMap.put(req.getRequestURI(), value + 1);
 		}
 		
 		
@@ -71,7 +71,9 @@ public class RequestCounterFilter implements Filter{
 		//전처리 : 요청이 서블릿으로 가기전에 실행되는 부분
 		
 		logger.debug("RequestCounterFilter 전처리 부분- chain.doFilter 호출전");
+		
 		chain.doFilter(request, response);  //servlet 처리
+		
 		logger.debug("RequestCounterFilter 후처리 부분- chain.doFilter 호출후");
 		
 		//후처리 - servlet 응답생성후 응답이 웹브라우저로 가는단계에서 후속처리
