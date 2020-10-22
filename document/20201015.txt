@@ -1,0 +1,11 @@
+
+
+1. page 파라미터를 받는다
+
+2. page 파라미터가 없을 경우 1이라고 가정한다
+
+3. memberService.selectAllMember에 파라미터를 추가하여 페이징 처리가 가능하게끔 수정한다
+	혹은 새로운 메소드를 만든다
+	
+	
+service, dao selectMemberPageList 메소드 코드 작성
