@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	userId : <input type="text" name="userid" value="brown"/> <br>
-	file : <input type="file" name="img" /> <!-- 값을 미리 설정하는게 불가능 (보안문제) -->
-	<button type="submit">전송</button>
+	<form action="${cp }/fileUpload" method="POST" enctype="multipart/form-data">
+		userId : <input type="text" name="userid" value="brown"/> <br><br>
+		file : <input type="file" name="img" /> <!-- 값을 미리 설정하는게 불가능 (보안문제) -->
+		<button type="submit">전송</button>
+	</form>
 </body>
 </html>

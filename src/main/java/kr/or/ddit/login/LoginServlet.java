@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		logger.debug("loginServlet doGet");
+		logger.debug("UNT_CD parameter : {}", request.getParameter("UNT_CD"));
 		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
@@ -46,7 +47,9 @@ public class LoginServlet extends HttpServlet {
 		/*
 		 * 파라미터로 온 userId가 디비상에 존재하는지 확인하고, 비밀번호가 데이터베이스에 저장된 비밀번호와 일치하는지 확인
 		 * 
-		 * SELECT * FROM 회원 WHERE 회원아이디 = 파라미터로 넘어온 userId;
+		 * SELECT * 
+		 * FROM 회원 
+		 * WHERE 회원아이디 = 파라미터로 넘어온 userId;
 		 */
 
 		MemberVo memberVo = memberService.getMember(userId);

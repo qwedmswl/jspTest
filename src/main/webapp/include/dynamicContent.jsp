@@ -8,11 +8,12 @@
 </head>
 <body>
 	<h1>
-		<%
-			request.getRequestDispatcher("/include/header.jsp").include(request, response);
+		<%	
+			request.getRequestDispatcher("/include/header.jsp")
+										.include(request, response);
 		%>
 	</h1>
 	dynamicContent.jsp
-	param : <%=request.getParameter("param") %>
+	param : <%=request.getParameter("param") %> 
 </body>
 </html>
