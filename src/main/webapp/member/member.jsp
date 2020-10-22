@@ -13,19 +13,14 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp</title>
+
 <%@include file="/layout/commonLib.jsp"%>
 
-<script src="/js/jquery/jquery-1.12.4.js"></script>
-<link href="bootstrap.css" rel="stylesheet">
-<!-- Bootstrap core CSS -->
-<script src="bootstrap.js"></script>
-<!-- Custom styles for this template -->
-<link href="dashboard.css" rel="stylesheet">
-<link href="blog.css" rel="stylesheet">
 </head>
 
 <body>
 	<%@include file="/layout/header.jsp"%>
+	
 	<div class="container-fluid">
 		<div class="row">
 
@@ -59,42 +54,49 @@
 							<label class="control-label">${memberVo.userid }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 이름</label>
 						<div class="col-sm-10">
 							<label class="control-label">${memberVo.usernm }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<label class="control-label">${memberVo.alias }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="pass" class="col-sm-2 control-label">Password</label>
 						<div class="col-sm-10">
 							<label class="control-label">********</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="addr1" class="col-sm-2 control-label">주소</label>
 						<div class="col-sm-10">
 							<label class="control-label">${memberVo.addr1 }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="addr2" class="col-sm-2 control-label">상세주소</label>
 						<div class="col-sm-10">
 							<label class="control-label">${memberVo.addr2 }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="zipcode" class="col-sm-2 control-label">우편번호</label>
 						<div class="col-sm-10">
 							<label class="control-label">${memberVo.zipcode }</label>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<label for="reg_dt" class="col-sm-2 control-label">등록일자</label>
 						<div class="col-sm-10">
@@ -103,6 +105,7 @@
 						</div>
 					</div>
 					<%--                <img src="${cp }/memberImg?userid=brown"/> --%>
+					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
 							<button type="submit" class="btn btn-default">사용자 수정</button>
