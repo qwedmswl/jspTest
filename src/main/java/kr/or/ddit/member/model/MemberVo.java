@@ -12,7 +12,25 @@ public class MemberVo {
 	private String zipcode;
 	private Date reg_dt;
 	private String filename;
-	private String realfilename;
+	private String realFilename;
+	
+	public MemberVo() {
+		
+	}
+	
+	public MemberVo(String userid, String pass, String usernm, String alias, 
+			String addr1, String addr2, String zipcode,String filename, String realFilename) {
+		this.userid = userid;
+		this.pass = pass;
+		this.usernm = usernm;
+		this.alias = alias;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.zipcode = zipcode;
+		this.filename = filename;
+		this.realFilename = realFilename;
+	}
+	
 	public String getUserid() {
 		return userid;
 	}
@@ -67,18 +85,20 @@ public class MemberVo {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
-	public String getRealfilename() {
-		return realfilename;
+	public String getRealFilename() {
+		return realFilename;
 	}
-	public void setRealfilename(String realfilename) {
-		this.realfilename = realfilename;
+	public void setRealFilename(String realFilename) {
+		this.realFilename = realFilename;
 	}
+	
 	@Override
 	public String toString() {
 		return "MemberVo [userid=" + userid + ", pass=" + pass + ", usernm=" + usernm + ", alias=" + alias + ", addr1="
 				+ addr1 + ", addr2=" + addr2 + ", zipcode=" + zipcode + ", reg_dt=" + reg_dt + ", filename=" + filename
-				+ ", realfilename=" + realfilename + "]";
+				+ ", realFilename=" + realFilename + "]";
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,13 +108,14 @@ public class MemberVo {
 		result = prime * result + ((alias == null) ? 0 : alias.hashCode());
 		result = prime * result + ((filename == null) ? 0 : filename.hashCode());
 		result = prime * result + ((pass == null) ? 0 : pass.hashCode());
-		result = prime * result + ((realfilename == null) ? 0 : realfilename.hashCode());
+		result = prime * result + ((realFilename == null) ? 0 : realFilename.hashCode());
 		result = prime * result + ((reg_dt == null) ? 0 : reg_dt.hashCode());
 		result = prime * result + ((userid == null) ? 0 : userid.hashCode());
 		result = prime * result + ((usernm == null) ? 0 : usernm.hashCode());
 		result = prime * result + ((zipcode == null) ? 0 : zipcode.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -129,10 +150,10 @@ public class MemberVo {
 				return false;
 		} else if (!pass.equals(other.pass))
 			return false;
-		if (realfilename == null) {
-			if (other.realfilename != null)
+		if (realFilename == null) {
+			if (other.realFilename != null)
 				return false;
-		} else if (!realfilename.equals(other.realfilename))
+		} else if (!realFilename.equals(other.realFilename))
 			return false;
 		if (reg_dt == null) {
 			if (other.reg_dt != null)
@@ -156,23 +177,6 @@ public class MemberVo {
 			return false;
 		return true;
 	}
-	
-	public MemberVo() {
-		
-	}
-	public MemberVo(String userid, String pass, String usernm, String alias, String addr1, String addr2, String zipcode,
-			String filename, String realfilename) {
-		this.userid = userid;
-		this.pass = pass;
-		this.usernm = usernm;
-		this.alias = alias;
-		this.addr1 = addr1;
-		this.addr2 = addr2;
-		this.zipcode = zipcode;
-		this.filename = filename;
-		this.realfilename = realfilename;
-	}
-	
-	
+
 	
 }

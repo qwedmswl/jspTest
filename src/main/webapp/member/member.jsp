@@ -16,8 +16,18 @@
 
 <%@include file="/layout/commonLib.jsp"%>
 
+<script>
+	$(document).ready(function(){
+		$("#modifyBtn").on("click", function(){
+			document.location="/memberUpdate?userid=${memberVo.userid}"
+		})
+		$("#profileDownBtn").on("click", function(){
+			document.location="/profileDownload?userid=${memberVo.userid}"
+		})
+		
+	})	
+</script>
 </head>
-
 <body>
 	<%@include file="/layout/header.jsp"%>
 	
@@ -44,7 +54,8 @@
 						<div class="col-sm-10">
 <%-- 							<img src="${cp }/profile/${memberVo.filename}" /> --%>
 							
-							<img src="${cp }/profileImg?userid=${memberVo.userid }" />
+							<img src="${cp }/profileImg?userid=${memberVo.userid }" /><br>
+							<button id="profileDownBtn" type="button" >다운로드:${memberVo.realFilename }</button>
 						</div>
 					</div>
 					
@@ -108,7 +119,7 @@
 					
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 수정</button>
+							<button type="submit" onclick="location.href='memberUpdate.jsp'">사용자 수정</button>
 						</div>
 					</div>
 				</form>

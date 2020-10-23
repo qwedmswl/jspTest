@@ -23,7 +23,7 @@
 			// data-userid
 			var userid = $(this).data("userid");
 			console.log("userid : " + userid);
-
+// 			alert(userid);
 			document.location="/member?userid=" + userid;
 		});
 	});
@@ -55,7 +55,7 @@
 								</tr>
 								<tbody id="memberList">
 									<c:forEach items="${memberList }" var="member">
-										<tr data-uerid="${member.userid }">
+										<tr data-userid="${member.userid }">
 											<td>${member.userid }</td>
 											<td>${member.usernm }</td>
 											<td>${member.alias }</td>

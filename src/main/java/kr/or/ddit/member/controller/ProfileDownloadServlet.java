@@ -16,10 +16,10 @@ import kr.or.ddit.member.model.MemberVo;
 import kr.or.ddit.member.service.MemberService;
 import kr.or.ddit.member.service.MemberServiceI;
 
-@WebServlet("/profileImg")
-public class ProfileServlet extends HttpServlet {
+@WebServlet("/profileDownload")
+public class ProfileDownloadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final Logger logger = LoggerFactory.getLogger(ProfileServlet.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProfileDownloadServlet.class);
 	private MemberServiceI memberService;
 
 	@Override
@@ -32,22 +32,21 @@ public class ProfileServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 
-		// response content-type 설정
-		response.setContentType("image/png");
-		
 		// 사용자 아이디 파라미터 확인하고
 		String userid = request.getParameter("userid");
 
 		// db에서 사용자 filename 확인
 		MemberVo memberVo = memberService.getMember(userid);
 
+		// response content-type 설정
+		response.setHeader("Content-Disposition", "attachment; filename=\"" + memberVo.getRealFilename() + "\"");
+		response.setContentType("application/octet-stream");
+		
 		// 경로 확인후 파일 입출력을 통해 응답 생성
 		// 파일을 읽고
 //		memberVo.getFilename(); // 파일 경로
 		
 		FileInputStream fis = new FileInputStream(memberVo.getFilename());
-//		FileInputStream fis = new FileInputStream("D:\\profile\\brown.png");
-		
 		
 		// 응답 생성
 		ServletOutputStream sos = response.getOutputStream();

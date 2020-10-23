@@ -1,0 +1,8 @@
+1. 파일업로드 ==> 파일 다운로드
+
+업로드시 : filename 가져온 방법??
+Content-Disposition 헤더에서 획득
+Content-Disposition : form-data; name="img"; filename="sally.png";
+
+2. 쿼리(계층형, 답변형 게시판, *답변 횟수에 제한이 없는)
+3. 웹 에디터
