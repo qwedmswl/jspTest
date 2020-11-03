@@ -1,7 +1,11 @@
 package kr.or.ddit.board.repository;
 
+
+import org.springframework.stereotype.Repository;
+
 import kr.or.ddit.board.model.BoardVo;
 
+@Repository("boardRepository")
 public class BoardRepository implements BoardRepositoryI {
 
 	@Override
