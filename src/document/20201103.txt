@@ -69,7 +69,7 @@ Spring MVC
 
 부모 컨테이너에서 스프링 빈을 한번만 등록하므로 메모리 절약
 
-자식 컨테이너가 하나만 필요한 상황이더랃도 추후 확장성을 위해
+자식 컨테이너가 하나만 필요한 상황이더라도 추후 확장성을 위해
 부모 - 자식 컨테인로 분리하여 확장을 고려한다
 
 부모 컨테이너 생성
@@ -111,12 +111,4 @@ url-pattern 	mvc:default-	spring controller(/login/view.do)		index.jsp		js/boots
 	/				적용							O							O					O
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	WEB-INF 폴더를 web에서 읽지 못함
