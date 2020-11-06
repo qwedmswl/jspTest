@@ -2,9 +2,14 @@ package kr.or.ddit.member.model;
 
 import java.util.Date;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class MemberVo {
 	private String userid;
 	private String pass;
+	
+	//Null이면 안되고, empty체크
+	@NotEmpty
 	private String usernm;
 	private String alias;
 	private String addr1;
