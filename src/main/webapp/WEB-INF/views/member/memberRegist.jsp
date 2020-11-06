@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +75,7 @@
 					<div class="form-group">
 						<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 						<div class="col-sm-10">
-							<input type="file" name="realFilename" />
+							<input type="file" name="filename" />
 						</div>
 					</div>
 
@@ -90,13 +92,14 @@
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="usernm" name="usernm"
 								placeholder="사용자 이름" value="${param.usernm }">
+								<span style="color:red;"><form:errors path="memberVo.usernm"/></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="alias" class="col-sm-2 control-label">별명</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="alias" name="alias"
-								placeholder="별명">
+								placeholder="별명" value="${param.alias }">
 						</div>
 					</div>
 					<div class="form-group">
