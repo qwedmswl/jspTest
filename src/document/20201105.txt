@@ -27,3 +27,5 @@ jsp/servlet : response.sendRedirect("리다이렉트 주소");
 spring : viewName 앞에 접두어를 붙여서 반환
 			"redirect: 리다이렉트할주소"
 			"forward: 포워딩주소"
+
+jsp 프로젝트의 member와 관뢴된 화면, 기능 spring 프로젝트로 이관

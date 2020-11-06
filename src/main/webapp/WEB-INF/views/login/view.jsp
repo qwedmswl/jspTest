@@ -98,9 +98,9 @@
 		<form class="form-signin" action="${pageContext.request.contextPath }/login/process" method="post">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="inputEmail" class="sr-only">Email address</label>
-			<input type="email" id="inputEmail" name="userid" class="form-control" placeholder="Email address" required autofocus value="brown">
+			<input type="email" id="inputEmail" name="userid" class="form-control" placeholder="Email address" required autofocus value="boss">
 			<label for="inputPassword" class="sr-only">Password</label>
-			<input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required value="brownPass">
+			<input type="password" id="inputPassword" name="pass" class="form-control" placeholder="Password" required value="bossPass">
 			<div class="checkbox">
 				<label>
 					<input type="checkbox" value="remember-me"> Remember me
