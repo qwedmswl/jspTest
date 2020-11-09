@@ -57,7 +57,6 @@ public class MemberController {
 	}
 
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
-//	public String regist(MemberVo memberVo, MultipartFile profile) {
 	public String regist(@Valid MemberVo memberVo, BindingResult br, MultipartFile profile) {
 	//public String regist(@Valid JSRMemberVo memberVo, BindingResult br, MultipartFile profile) {
 
@@ -124,7 +123,7 @@ public class MemberController {
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
-				memberVo.setFilename(fileName);
+				memberVo.setFilename(filePath);
 				memberVo.setRealFilename(realFilename);
 			}
 		}

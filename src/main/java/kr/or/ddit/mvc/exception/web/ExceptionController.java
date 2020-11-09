@@ -11,7 +11,6 @@ public class ExceptionController {
 	
 	logger = LoggerFactory.getLogger(ExceptionController.class);
 	
-	
 	// logins
 	@RequestMapping("/exception/view")
 	public String view() {
@@ -27,6 +26,7 @@ public class ExceptionController {
 			// 찾고자 하는 파일이 없어서 예외 발생
 			
 			throw new Exception();
+			
 		} catch (Exception e) {
 			// Exception 대신 우리가 만든 NoFileException으로 처리
 			// NoFileException은 @ResponseStatus 설정에 의해
@@ -35,6 +35,7 @@ public class ExceptionController {
 		}
 //		return "";
 	}
+	
 //	@ExceptionHandler({ArithmeticException.class})
 //	public String handler() {
 //		logger.debug("ExceptionController.handler()");
@@ -42,4 +43,5 @@ public class ExceptionController {
 //		// 에러를 처리할 화면
 //		return "Exception/airthmetic";
 //	}
+	
 }

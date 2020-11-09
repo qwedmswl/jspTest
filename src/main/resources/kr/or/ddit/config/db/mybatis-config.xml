@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.or.ddit.member.model.MemberVo" alias="MemberVo"/>
+		<typeAlias type="kr.or.ddit.common.model.PageVo" alias="PageVo"/>
 	</typeAliases>
 	
 	<environments default="development">

@@ -21,7 +21,7 @@ $(document).ready(function(){
 		document.location="/member/update?userid=${memberVo.userid}";
 	});
 	$("#profileDownBtn").on("click", function(){
-		document.location="/profileDownload?userid=${memberVo.userid}";
+		document.location="/profileImgDown?userid=${memberVo.userid}";
 	});
 });
 </script>
