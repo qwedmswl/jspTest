@@ -23,6 +23,22 @@
 		<property name="order" value="0"/>
 	</bean>
 	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="0"></property>
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+	</bean>
+	
+	<!-- tiles view resolver 추가
+		1. tiles 설정 작업 ==> TilesConfiguere를 통해 설정
+		2. thies view reosolver 등록 -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>classpath:kr/or/ddit/config/tiles/tiles-definition.xml</value>
+			</list>
+		</property>
+	</bean>
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- prefix : 접두어, suffix : 접미어 
 			Controller가 리턴하는 문자열에 prefix, suffix를 적용하여 해당 경로의 파일로
@@ -64,7 +80,17 @@
 		<mvc:resources location="/WEB-INF/views/error" mapping="/resources/**"/>
 		<!--  ANT : 개미 - ant, maven, gradle -->
 		
+		<!-- localResolver -->
+		<bean id="localResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
 		
+		<mvc:interceptors>
+				<mvc:interceptor>
+					<mvc:mapping path="/**"/>
+					<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+						<property name="paramName" value="lang"/>
+					</bean>
+				</mvc:interceptor>
+		</mvc:interceptors>
 	
 		
 </beans>
