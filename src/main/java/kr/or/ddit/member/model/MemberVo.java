@@ -22,6 +22,10 @@ public class MemberVo {
 	public MemberVo() {
 		
 	}
+	public MemberVo(String userid, String usernm) {
+		this.userid = userid;
+		this.usernm = usernm;
+	}
 	
 	public MemberVo(String userid, String pass, String usernm, String alias, 
 			String addr1, String addr2, String zipcode,String filename, String realFilename) {
