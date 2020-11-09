@@ -39,7 +39,7 @@ public class MemberController {
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("pages", map.get("pages"));
 				
-		return "member/list";
+		return "tiles/member/memberListContent";
 	}
 	
 	@RequestMapping("/member")
