@@ -14,9 +14,6 @@
 		});
 	});
 </script>
-<body>
-
-	<%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
 	<div class="row">
 		tiles : memberListContent.jsp
@@ -44,7 +41,7 @@
 				</table> 
 			</div>
 
-			<a href="${cp }/memberRegist" class="btn btn-default pull-right">사용자 등록</a>
+			<a href="${cp }/member/regist" class="btn btn-default pull-right">사용자 등록</a>
 			<div class="text-center">
 				<ul class="pagination">
 					<c:forEach var="i" begin="1" end="${pages }">
@@ -53,7 +50,7 @@
 								<li class="active"><span>${i }</span></li>
 							</c:when>
 							<c:otherwise>
-								<li><a href="${pageContext.request.contextPath }/memberList?page=${i}">${i}</a></li>
+								<li><a href="${pageContext.request.contextPath }/member/list?page=${i}">${i}</a></li>
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
@@ -61,5 +58,3 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>

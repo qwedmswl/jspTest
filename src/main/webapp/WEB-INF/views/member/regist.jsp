@@ -21,12 +21,12 @@
 $(document).ready(function(){
 	$("#zipcodeBtn").on("click", function(){
 		new daum.Postcode({
-	        oncomplete: function(data) {
-	            console.log(data);
-	            $("#addr1").val(data.roadAddress);
-	            $("#zipcode").val(data.zonecode);
-	        }
-	    }).open();		
+			oncomplete: function(data) {
+				console.log(data);
+				$("#addr1").val(data.roadAddress);
+				$("#zipcode").val(data.zonecode);
+			}
+		}).open();		
 	});
 	$("#regBtn").on("click", function(){
 		//client side - validation

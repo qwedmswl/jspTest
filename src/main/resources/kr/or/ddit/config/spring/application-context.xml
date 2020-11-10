@@ -20,7 +20,7 @@
 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
 	<bean id="excelView" class="kr.or.ddit.mvc.view.ExcelDownloadView"/>
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
-		<property name="order" value="0"/>
+		<property name="order" value="1"/>
 	</bean>
 	
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
@@ -51,7 +51,7 @@
 			
 		-->
 		
-		<property name="order" value="1"/>
+		<property name="order" value="2"/>
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
@@ -60,15 +60,16 @@
 		HandlerMapping, HandlerAdapter,
 		formatting conversion service 등
 		spring mvc 패턴에 필요한 어노테이션, 엘레멘트 처리 -->
+		
 	<mvc:annotation-driven/>
+	
 	<!-- spring container가 처리하지 못하는 요청에 대해 
 		server에 등록된 default servlet 에게 위임 -->
+		
 	<mvc:default-servlet-handler/>
 	
 	<!-- 파일 업로드 처리를 위한 multipartResolver 설정 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		
-		
 	</bean>
 	
 	
@@ -77,7 +78,7 @@
 		2. WEB-INF : 외부에서 접근 불가능한 공간에 저장된 자원들 접근 매핑 -->
 		
 		<!-- localhost/resoureces/style.css -->
-		<mvc:resources location="/WEB-INF/views/error" mapping="/resources/**"/>
+		<mvc:resources location="/WEB-INF/views/error/" mapping="/resources/**"/>
 		<!--  ANT : 개미 - ant, maven, gradle -->
 		
 		<!-- localResolver -->

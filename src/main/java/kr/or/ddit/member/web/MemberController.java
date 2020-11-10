@@ -8,6 +8,8 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,8 @@ import kr.or.ddit.member.service.MemberServiceI;
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	
 	@Resource(name="memberService")
 	private MemberServiceI memberService;
 	
@@ -38,8 +42,48 @@ public class MemberController {
 		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
 		model.addAttribute("memberList", map.get("memberList"));
 		model.addAttribute("pages", map.get("pages"));
-				
+		
+		// return "member/list";
+		// return "tiles.memberList";
 		return "tiles/member/memberListContent";
+	}
+	
+	@RequestMapping("/listAjaxPage")
+	public String listAjaxPage() {
+		return "tiles/member/listAjaxPage";
+	}
+	
+	@RequestMapping("/memberAjaxPage")
+	public String memberAjaxPage() {
+		return "tiles/member/memberAjaxPage";
+	}
+	
+	@RequestMapping("memberAjax")
+	public String memberAjaxPage(String userid, Model model) {
+		model.addAttribute("memberVo", memberService.getMember(userid));
+		return "jsonView";
+	}
+	// 페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjax")
+	public String listAjax(PageVo pageVo, Model model) {
+		logger.debug("pageVo : {} ", pageVo);	
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		return "jsonView";
+	}
+	
+	// 페이지 요청(/list와 다르게 page, pageSize 파라미터가 반드시 존재한다는 가정으로 작성)
+	@RequestMapping("/listAjaxHTML")
+	public String listAjaxHTML(PageVo pageVo, Model model) {
+		logger.debug("pageVo : {} ", pageVo);	
+		Map<String, Object> map = memberService.selectMemberPageList(pageVo);
+		model.addAttribute("memberList", map.get("memberList"));
+		model.addAttribute("pages", map.get("pages"));
+		
+		// 응답을 html ==> jsp로 생성
+		return "member/listAjaxHTML";
 	}
 	
 	@RequestMapping("/member")
@@ -48,12 +92,12 @@ public class MemberController {
 		
 		model.addAttribute("memberVo", memberVo);
 		
-		return "member/member";
+		return "tiles/member/memberContent";
 	}
 	
 	@RequestMapping(path="/regist", method = {RequestMethod.GET})
 	public String regist() {
-		return "member/regist";
+		return "tiles/member/registContent";
 	}
 
 	@RequestMapping(path="/regist", method = {RequestMethod.POST})
@@ -64,7 +108,7 @@ public class MemberController {
 
 		//검증을 통과하지 못했으므로 사용자 등록 화면으로 이동
 		if(br.hasErrors()) {
-			return "member/regist";
+			return "tiles/member/registContent";
 		}
 
 		String realFilename = profile.getOriginalFilename();
@@ -93,14 +137,16 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/regist";
+			return "tiles/member/registContent";
 		}
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.GET})
 	public String update(String userid, Model model) {
 		model.addAttribute("memberVo", memberService.getMember(userid));
-		return "member/update";
+		
+//		return "member/update";
+		return "tiles/member/updateContent";
 	}
 	
 	@RequestMapping(path="/update", method= {RequestMethod.POST})
@@ -136,7 +182,8 @@ public class MemberController {
 		}
 		//1건이 아닐때 : 비정상 - 사용자가 데이터를 다시 입력할 수 있도록 등록페이지로 이동
 		else {
-			return "member/update";
+//			return "member/update";
+			return "tiles/member/updateContent";
 		}
 	}
 }

@@ -93,6 +93,8 @@ public class LoginController {
 		logger.debug("LoginController.process() {} / {} / {}", userid, pass, memberVo);
 		logger.debug("user_id : {}", user_id);
 		
+		logger.debug("body : {} ", body);
+		
 		MemberVo dbMember = memberService.getMember(userid);
 		logger.debug("dbMember : {}", dbMember);
 		

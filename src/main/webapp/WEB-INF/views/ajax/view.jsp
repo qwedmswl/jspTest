@@ -54,7 +54,7 @@
 		<select id="dataType">
 			<option value="json">json</option>
 			<option value="xml">xml</option> 
-		</select>
+		</select> 
 		<button type="button" id="makeJsonBtn">json 문자열 생성</button><br>
 		<button type="button" id="callAjax">ajax 전송</button><br>
 	</div>
