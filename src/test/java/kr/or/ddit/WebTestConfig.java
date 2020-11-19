@@ -2,11 +2,17 @@ package kr.or.ddit;
 
 import static org.junit.Assert.*;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -16,7 +22,9 @@ import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:kr/or/ddit/config/spring/root-context.xml",
-									"classpath:kr/or/ddit/config/spring/application-context.xml"})
+									"classpath:kr/or/ddit/config/spring/application-context.xml",
+									"classpath:kr/or/ddit/config/spring/datasource_context_dev.xml",
+									"classpath:kr/or/ddit/config/spring/transaction_context.xml"})
 @WebAppConfiguration	// 스프링컨테이너를 웹기반에서 동작하는 컨테이너로 생성하는 옵션 (@Controller, @RequestMapping)
 @Ignore // 상속 받은거는 없애지 못함 스킵은 가능
 public class WebTestConfig {
@@ -38,6 +46,9 @@ public class WebTestConfig {
 	
 	protected MockMvc mockMvc;
 	
+	
+	@Resource(name="dataSource")
+	private DataSource dataSource;
 	/*
 		@Before(setup) ==> @Test ==> @After(tearDown)
 	 */
@@ -45,6 +56,14 @@ public class WebTestConfig {
 	@Before
 	public void setup() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).build();
+		
+		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
+//		new ClassPathResource("/kr/or/ddit/config/db/initData.sql"); 스크립트에 대한 경로 설정 addScript의 인자로 넘겨줄 수 있음
+		populator.addScripts(new ClassPathResource("/kr/or/ddit/config/db/initData.sql"));
+		
+		populator.setContinueOnError(false);
+		
+		DatabasePopulatorUtils.execute(populator, dataSource);
 	}
 	
 	// get(), post() : get/post 요청

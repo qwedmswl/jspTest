@@ -74,7 +74,7 @@ public class LoginController {
 	@RequestMapping(path="/view", method = RequestMethod.GET)
 	public String getView() {
 		logger.debug("LoginController.getView()");
-		return "login/view";
+		return "login";
 	}
 	
 	// 파라미터 이름과 동일한 이름의 메소드 인자를 선언하면
@@ -86,7 +86,7 @@ public class LoginController {
 	// Model : view 객체에서 응답을 생성할 때 참조할 데이터를 담는 객체
 	//			jsp/servlet 기반의 request 역할을 담당
 	
-	@RequestMapping(path="/process", params = {"userid"} )
+	@RequestMapping(path="/process", params = {"userid"}, method = RequestMethod.GET )
 	public String process(String userid, String pass, MemberVo memberVo, @RequestBody String body, HttpSession session, Model model
 								, @RequestParam(name="email", required = false, defaultValue = "brown@line.kr") String user_id) {
 		
